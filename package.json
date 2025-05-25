@@ -1,0 +1,20 @@
+{
+  "name": "simulation-construction-kit",
+  "version": "0.1.0",
+  "description": "",
+  "homepage": "https://github.com/stolsky/simulation-construction-kit#readme",
+  "bugs": {
+    "url": "https://github.com/stolsky/simulation-construction-kit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stolsky/simulation-construction-kit.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "stolsky",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
