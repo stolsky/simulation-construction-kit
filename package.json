@@ -1,20 +1,44 @@
 {
-  "name": "simulation-construction-kit",
-  "version": "0.1.0",
-  "description": "",
-  "homepage": "https://github.com/stolsky/simulation-construction-kit#readme",
-  "bugs": {
-    "url": "https://github.com/stolsky/simulation-construction-kit/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/stolsky/simulation-construction-kit.git"
-  },
-  "license": "SEE LICENSE IN LICENSE",
-  "author": "stolsky",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+    "name": "simulation-construction-kit",
+    "version": "0.1.0",
+    "description": "Toolbox to help you visualize your simulation ideas.",
+    "author": "stolsky",
+    "homepage": "https://github.com/stolsky/simulation-construction-kit#readme",
+    "bugs": {
+        "url": "https://github.com/stolsky/simulation-construction-kit/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/stolsky/simulation-construction-kit.git"
+    },
+    "keywords": [
+        
+    ],
+    "license": "SEE LICENSE IN LICENSE",
+    "type": "module",
+    "files": [
+        "dist"
+    ],
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "start": "vite",
+        "dev": "vite",
+        "build": "vite build",
+        "serve": "vite preview",
+        "test": "vitest"
+    },
+
+    "devDependencies": {
+        "@solidjs/testing-library": "^0.8.10",
+        "@testing-library/jest-dom": "^6.6.3",
+        "jsdom": "^26.1.0",
+        "typescript": "^5.8.3",
+        "vite": "^6.3.5",
+        "vite-plugin-solid": "2.11.6",
+        "vitest": "^3.1.4"
+    },
+    "dependencies": {
+        "solid-js": "^1.9.7"
+    }
 }

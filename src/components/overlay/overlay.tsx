@@ -1,0 +1,24 @@
+import type { JSX } from "solid-js/jsx-runtime"
+
+import "./overlay.css"
+
+
+export default (props: {
+    children: JSX.Element
+    background_color?: string,
+    backdrop_filter?: string,
+    drag_and_drop?: boolean
+}) => {
+    const drag = props.drag_and_drop || false
+    return (
+        <div
+            class="Overlay"
+            style={{
+                "background-color": props.background_color || "transparent",
+                "backdrop-filter": props.backdrop_filter || "none"
+            }}
+        >
+            { props.children }
+        </div>
+    )
+}
