@@ -3,7 +3,7 @@ import { Show } from "solid-js"
 import { RunState, TimeState } from "../../state/state"
 import { formatTime } from "../../utilities/time"
 
-import "./controls.css"
+import styles from "./controls.module.css"
 
 
 export default (props: {
@@ -17,7 +17,7 @@ export default (props: {
     const [timeState, { decreaseSpeed, increaseSpeed, isMaximumSpeed, isMinimumSpeed }] = TimeState
 
     return (
-        <div class="Controls">
+        <div class={styles.Controls}>
             <Show when={ !isRunning() }>
                 <button onclick={ () => startSimulation() }>play</button>
             </Show>

@@ -14,3 +14,12 @@ package-lock.json
 
 # Build folder
 dist
+
+# types and jsx files
+lib/**/*.js
+lib/**/*.jsx
+lib/**/*.d.ts
+
+# development files
+index.html
+src

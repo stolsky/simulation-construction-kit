@@ -1,6 +1,6 @@
 {
     "name": "simulation-construction-kit",
-    "version": "0.1.0",
+    "version": "0.0.3",
     "description": "Toolbox to help you visualize your simulation ideas.",
     "author": "stolsky",
     "homepage": "https://github.com/stolsky/simulation-construction-kit#readme",
@@ -11,34 +11,42 @@
         "type": "git",
         "url": "git+https://github.com/stolsky/simulation-construction-kit.git"
     },
-    "keywords": [
-        
-    ],
+    "keywords": [],
     "license": "SEE LICENSE IN LICENSE",
     "type": "module",
+    "main": "./dist/main.js",
+    "types": "./dist/main.d.ts",
     "files": [
         "dist"
     ],
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
     "scripts": {
         "start": "vite",
         "dev": "vite",
-        "build": "vite build",
+        "build": "tsc --p ./tsconfig-build.json && vite build",
+        "prepublishOnly": "npm run build",
         "serve": "vite preview",
         "test": "vitest"
     },
-
     "devDependencies": {
         "@solidjs/testing-library": "^0.8.10",
         "@testing-library/jest-dom": "^6.6.3",
+        "@types/node": "^22.15.30",
+        "glob": "^11.0.2",
         "jsdom": "^26.1.0",
+        "pixi.js": "^8.9.2",
+        "solid-js": "^1.9.7",
         "typescript": "^5.8.3",
         "vite": "^6.3.5",
+        "vite-plugin-dts": "^4.5.4",
+        "vite-plugin-lib-inject-css": "^2.2.2",
         "vite-plugin-solid": "2.11.6",
         "vitest": "^3.1.4"
     },
-    "dependencies": {
+    "peerDependencies": {
+        "pixi.js": "^8.9.2",
         "solid-js": "^1.9.7"
-    }
+    },
+    "sideEffects": [
+        "**/*.css"
+    ]
 }

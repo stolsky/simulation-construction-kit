@@ -1,6 +1,6 @@
 import type { JSX } from "solid-js/jsx-runtime"
 
-import "./overlay.css"
+import styles from "./overlay.module.css"
 
 
 export default (props: {
@@ -12,7 +12,7 @@ export default (props: {
     const drag = props.drag_and_drop || false
     return (
         <div
-            class="Overlay"
+            class={styles.Overlay}
             style={{
                 "background-color": props.background_color || "transparent",
                 "backdrop-filter": props.backdrop_filter || "none"

@@ -1,13 +1,19 @@
 {
-  "compilerOptions": {
-    "strict": true,
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "types": ["vite/client", "@testing-library/jest-dom"]
-  }
+    "compilerOptions": {
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "declaration": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js",
+        "skipLibCheck": true,
+        "types": ["vite/client", "@testing-library/jest-dom"]
+    },
+    "include": ["src", "lib"],
+    "exclude": ["node_modules"]
 }

@@ -10,7 +10,7 @@ export default (props: {
     return (
         <div class="Header">
             <Show when={props.title}>
-                <p>{props.title}</p>
+                <p class="Title">{props.title}</p>
             </Show>
             { props.children }
         </div>
