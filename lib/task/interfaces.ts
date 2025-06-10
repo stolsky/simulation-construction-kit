@@ -7,9 +7,7 @@ interface ITask {
 
     is_completed: () => boolean
 
-    render: () => void
-
-    update: (delta_time: number) => void
+    loop: (delta_time: number) => void
 
 }
 

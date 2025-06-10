@@ -14,8 +14,7 @@ const createMainLoop = (task: ITask, app: Application) => {
             updateElapsedTime(adjustedDeltaTime)
             // TODO what happened if completed, how to make endless simulations, reset() method?
             if (!task.is_completed()) {
-                task.update(adjustedDeltaTime)
-                task.render()
+                task.loop(adjustedDeltaTime)
             }
         })
     })
