@@ -14,7 +14,9 @@ export default (props: {
     const height = props?.height || 600
     return (
         <Panel
+            height={height}
             title={props?.title}
+            width={width}
         >
             <Canvas
                 height={height}

@@ -1,6 +1,6 @@
 {
     "name": "simulation-construction-kit",
-    "version": "0.0.3",
+    "version": "0.0.5",
     "description": "Toolbox to help you visualize your simulation ideas.",
     "author": "stolsky",
     "homepage": "https://github.com/stolsky/simulation-construction-kit#readme",
@@ -41,10 +41,10 @@
         "vite-plugin-dts": "^4.5.4",
         "vite-plugin-lib-inject-css": "^2.2.2",
         "vite-plugin-solid": "2.11.6",
-        "vitest": "^3.1.4"
+        "vitest": "^3.2.3"
     },
     "peerDependencies": {
-        "pixi.js": "^8.9.2",
+        "pixi.js": "^8.10.1",
         "solid-js": "^1.9.7"
     },
     "sideEffects": [
