@@ -13,7 +13,7 @@ export default defineConfig({
     plugins: [
         solidPlugin(),
         libInjectCss(),
-        dts({ include: ["lib"] })
+        dts({ include: ['lib'] })
     ],
     server: {
         port: 3000
@@ -27,7 +27,7 @@ export default defineConfig({
     build: {
         copyPublicDir: false,
         lib : {
-            entry: resolve(__dirname, "lib/index.ts"),
+            entry: resolve(__dirname, "lib/main.ts"),
             formats: ["es"]
         },
         rollupOptions: {

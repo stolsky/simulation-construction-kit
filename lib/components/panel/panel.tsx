@@ -1,52 +1,52 @@
-import type { JSX } from "solid-js/jsx-runtime"
-import { Match, Show, Switch, type JSXElement } from "solid-js"
+import { createSignal, Show } from "solid-js"
 
-import Header from "./header"
-import Content from "./content"
+import Header from "./header/header"
+import Content from "./content/content"
+import Footer from "./footer/footer"
 
+import { TPanelProperties } from "./types"
 import styles from "./panel.module.css"
 
 
-export default (props: {
-    title?: string,
-    width: number,
-    height: number,
-    children: JSX.Element
-}) => {
-    const { children, height, title, width } = props
+const DEFAULT_PANEL_SIZE = 400
 
-    // only check first-level-children
-    let header: JSX.Element
-    let footer: JSX.Element
-    if (children instanceof Array) {
-        children.forEach((jsx_element) => {
-            const html_element = jsx_element?.valueOf() 
-            if (html_element && html_element instanceof HTMLElement) {
-                if (!header && html_element.classList.contains("Header")) {
-                    header = jsx_element
-                }
-                else if (!footer && html_element.classList.contains("Footer")) {
-                    footer = jsx_element
-                }
-            }
-        })
-    }
-    
+export default (props: TPanelProperties) => {
+    const {
+        change_size,
+        drag_drop,
+        show_information,
+        statusbar,
+        title,
+        toggle_fullscreen
+    } = props
+
+    // TODO fullscreen signal, how to get parents size?
+    // TODO footer signal
+
+    // if fullscreen
+    //const [size, set_size] = createSignal(false)
+
+    // if drag and drop
+    // const [position, set_position] = createSignal({ x: 0, y: 0 })
+
     return (
-        <div class={styles.Panel}>
-            <Switch>
-                <Match when={ header }>
-                    { header }
-                </Match>
-                <Match when={ title }>
-                    <Header title={ title } />
-                </Match>
-            </Switch>
-            <Content width={ width } height={ height }>
-                { children }
+        <div class={styles.Panel}>   
+            <Show when={title || toggle_fullscreen || show_information}>
+                <Header
+                    // drag_drop={set_position}
+                    //show_information={show_information || false}
+                    title={title}
+                    //toggle_fullscreen={set_fullscreen}
+                />
+            </Show>      
+            <Content
+                height={props?.height || DEFAULT_PANEL_SIZE}
+                width={props?.width || DEFAULT_PANEL_SIZE}
+            >
+                { props.children }
             </Content>
-            <Show when={ footer }>
-                { footer }
+            <Show when={statusbar}>
+                <Footer />
             </Show>
         </div>
     )

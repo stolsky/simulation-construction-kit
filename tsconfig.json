@@ -12,7 +12,9 @@
         "jsx": "preserve",
         "jsxImportSource": "solid-js",
         "skipLibCheck": true,
-        "types": ["vite/client", "@testing-library/jest-dom"]
+        "types": ["vite/client", "@testing-library/jest-dom"],
+        "noEmit": true,
+        "isolatedModules": true
     },
     "include": ["src", "lib"],
     "exclude": ["node_modules"]

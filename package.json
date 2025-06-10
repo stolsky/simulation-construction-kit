@@ -20,11 +20,12 @@
         "dist"
     ],
     "scripts": {
-        "start": "vite",
-        "dev": "vite",
         "build": "tsc --p ./tsconfig-build.json && vite build",
+        "dev": "vite",
+        "lint": "tsc",
         "prepublishOnly": "npm run build",
         "serve": "vite preview",
+        "start": "vite",
         "test": "vitest"
     },
     "devDependencies": {

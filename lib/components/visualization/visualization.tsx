@@ -10,9 +10,17 @@ export default (props: {
     height?: number,
     task: ITask
 }) => {
+    const width = props?.width || 800
+    const height = props?.height || 600
     return (
-        <Panel title={props?.title || ""} width={props?.width || 800} height={props?.height || 600}>
-            <Canvas task={props.task} width={props?.width || 800} height={props?.height || 600} />
+        <Panel
+            title={props?.title}
+        >
+            <Canvas
+                height={height}
+                task={props.task}
+                width={width}
+            />
         </Panel>
     )
 }
