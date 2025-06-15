@@ -46,8 +46,8 @@ export {
 
 // methods
 import {
-    formatTime
+    format_time
 } from "./utilities/time"
 export {
-    formatTime
+    format_time as formatTime
 }

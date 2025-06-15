@@ -4,41 +4,41 @@ import { createSignal } from "solid-js"
 import type { RunStateType, TimeStateType } from "./types"
 
 
-const Speed = { min: 2 ** -3, factor: 2, max: 2 ** 10 }
-const [timeState, setTimeState] = createStore({
-        speedMultiplier: 1,
-        elapsedTime: 0 // 53000000 // TODO reset elapsedTime to 0
+const speed = { min: 2 ** -3, factor: 2, max: 2 ** 10 }
+const [time_state, set_time_state] = createStore({
+        speed_multiplier: 1,
+        elapsed_time: 0
 })
 const TimeState: TimeStateType = [
-    timeState,
+    time_state,
     {
-        decreaseSpeed: () => setTimeState("speedMultiplier", (current) => {
-            current = current / Speed.factor
-            if (current < Speed.min) {
-                current = Speed.min
+        decrease_speed: () => set_time_state("speed_multiplier", (current) => {
+            current = current / speed.factor
+            if (current < speed.min) {
+                current = speed.min
             }
             return current
         }),
-        getElapsedTime: () => timeState.elapsedTime,
-        increaseSpeed: () => setTimeState("speedMultiplier", (current) => {
-            current = current * Speed.factor
-            if (current > Speed.max) {
-                current = Speed.max
+        get_elapsed_time: () => time_state.elapsed_time,
+        increase_speed: () => set_time_state("speed_multiplier", (current) => {
+            current = current * speed.factor
+            if (current > speed.max) {
+                current = speed.max
             }
             return current
         }),
-        isMaximumSpeed: () => timeState.speedMultiplier === Speed.max,
-        isMinimumSpeed: () => timeState.speedMultiplier === Speed.min,
-        updateElapsedTime: (deltaTime: number) => setTimeState("elapsedTime", (current) => current + deltaTime)
+        is_maximum_speed: () => time_state.speed_multiplier === speed.max,
+        is_minimum_speed: () => time_state.speed_multiplier === speed.min,
+        update_elapsed_time: (delta_time: number) => set_time_state("elapsed_time", (current) => current + delta_time)
     }
 ]
 
-const [isRunning, setIsRunning] = createSignal(false)
+const [is_running, set_is_running] = createSignal(false)
 const RunState: RunStateType = [
-    isRunning,
+    is_running,
     {
-        startSimulation: () => setIsRunning(true),
-        pauseSimulation: () => setIsRunning(false)
+        start_simulation: () => set_is_running(true),
+        pause_simulation: () => set_is_running(false)
     }
 ]
 

@@ -1,4 +1,4 @@
-import { Application, Ticker, TickerCallback } from "pixi.js"
+import { Application, Ticker } from "pixi.js"
 
 import { IRenderer } from "./types"
 
@@ -13,6 +13,7 @@ class PixiRenderer implements IRenderer {
         this.app = new Application()
     }
 
+    // @see https://pixijs.com/8.x/guides/components/application/ticker-plugin
     add_ticker = (loop: (deltaTime: number) => void) => this.app.ticker.add((ticker: Ticker) => loop(ticker.deltaTime))
 
     get_canvas = () => this.app.canvas
