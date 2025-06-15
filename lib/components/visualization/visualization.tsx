@@ -1,4 +1,4 @@
-import type { ITask } from "../../task/interfaces"
+import type { ITask } from "../../renderer/types"
 
 import Panel from "../panel/panel"
 import Canvas from "./canvas"

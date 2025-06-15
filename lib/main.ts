@@ -1,7 +1,21 @@
-// types
-import { type ITask } from "./task/interfaces"
-export type {
+// interfaces & types
+import type {
+    IRenderer,
     ITask
+} from "./renderer/types"
+import { type TPixiRenderer } from "./renderer/pixi_renderer"
+export type {
+    IRenderer,
+    ITask,
+    TPixiRenderer
+}
+
+// classes
+import { PixiRenderer } from "./renderer/pixi_renderer"
+import { PixiTask } from "./renderer/pixi_task"
+export {
+    PixiRenderer,
+    PixiTask
 }
 
 // components
@@ -21,14 +35,19 @@ export {
 }
 
 // states
-import { RunState, TimeState } from "./state/state"
+import {
+    RunState,
+    TimeState
+} from "./state/state"
 export {
     RunState,
     TimeState,
 }
 
 // methods
-import { formatTime } from "./utilities/time"
+import {
+    formatTime
+} from "./utilities/time"
 export {
     formatTime
 }

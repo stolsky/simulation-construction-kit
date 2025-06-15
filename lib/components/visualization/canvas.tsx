@@ -1,16 +1,16 @@
-import { Application } from "pixi.js"
 import { createEffect, createSignal } from "solid-js"
 
 import { RunState, TimeState } from "../../state/state"
-import type { ITask } from "../../task/interfaces"
+import { IRenderer, ITask } from "../../renderer/types"
+import { PixiRenderer } from "../../renderer/pixi_renderer"
 
 
-const createMainLoop = (task: ITask, app: Application) => {
+const createMainLoop = (task: ITask, app: IRenderer) => {
     // @see https://pixijs.com/8.x/guides/components/application/ticker-plugin
     task.init(app).then(() => {
-        app.ticker.add((time) => {
+        app.add_ticker((deltaTime) => {
             const [timeState, { updateElapsedTime }] = TimeState
-            const adjustedDeltaTime = time.deltaTime * timeState.speedMultiplier
+            const adjustedDeltaTime = deltaTime * timeState.speedMultiplier
             updateElapsedTime(adjustedDeltaTime)
             // TODO what happened if completed, how to make endless simulations, reset() method?
             if (!task.is_completed()) {
@@ -30,9 +30,11 @@ export default (props: {
     const [canvas, setCanvas] = createSignal<HTMLCanvasElement>()
     const [isRunning] = RunState
 
-    const app = new Application()
+    // TODO move selection of wrapper to config, etc..
+    // TODO replace PixiWrapper with "SelectedWrapper"
+    const app = new PixiRenderer()
     app.init({ background: "#1099bb", width: props.width, height: props.height })
-        .then(() => { setCanvas(app.canvas) })
+        .then(() => { setCanvas(app.get_canvas()) })
         .catch((err) => console.error("Crashing when loading WebGL", err))
 
     createEffect(() => {
