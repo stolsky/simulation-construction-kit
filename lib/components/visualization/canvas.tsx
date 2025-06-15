@@ -6,14 +6,17 @@ import { PixiRenderer } from "../../renderer/pixi_renderer"
 
 
 const createMainLoop = (task: ITask, app: IRenderer) => {
-    // @see https://pixijs.com/8.x/guides/components/application/ticker-plugin
     task.init(app).then(() => {
         app.add_ticker((deltaTime) => {
-            const [timeState, { updateElapsedTime }] = TimeState
-            const adjustedDeltaTime = deltaTime * timeState.speedMultiplier
+            const [timeState, { update_elapsed_time: updateElapsedTime }] = TimeState
+            const adjustedDeltaTime = deltaTime * timeState.speed_multiplier
             updateElapsedTime(adjustedDeltaTime)
             // TODO what happened if completed, how to make endless simulations, reset() method?
-            if (!task.is_completed()) {
+            if (task.is_completed()) {
+                // reset task
+                // count loop cycle
+            }
+            else {
                 task.loop(adjustedDeltaTime)
             }
         })
@@ -27,31 +30,32 @@ export default (props: {
 }) => {
     const { task } = props
 
-    const [canvas, setCanvas] = createSignal<HTMLCanvasElement>()
+    const [canvas, set_canvas] = createSignal<HTMLCanvasElement>()
     const [isRunning] = RunState
 
     // TODO move selection of wrapper to config, etc..
     // TODO replace PixiWrapper with "SelectedWrapper"
     const app = new PixiRenderer()
     app.init({ background: "#1099bb", width: props.width, height: props.height })
-        .then(() => { setCanvas(app.get_canvas()) })
-        .catch((err) => console.error("Crashing when loading WebGL", err))
-
-    createEffect(() => {
-        // console.log("canvas effect")
-        if (canvas()) {
+        .then(() => {
+            set_canvas(app.get_canvas())
             createMainLoop(task, app)
-        }
-    })
+        })
 
     createEffect(() => {
-        // console.log("isRunning effect")
-        if (isRunning()) {
-            app.start()
-        } else if (canvas()) {
-            app.stop()
-        }
+        if (canvas()) {
+            if (isRunning()) {
+                // console.log("isRunning effect start")
+                app.start()
+            }
+            else {
+                // console.log("isRunning effect stop")
+                app.stop()
+            }
+        }  
     })
+
+    
     
     return (<>{ canvas }</>)
 }

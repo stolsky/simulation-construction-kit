@@ -1,42 +1,43 @@
 import { Show } from "solid-js"
 
 import { RunState, TimeState } from "../../state/state"
-import { formatTime } from "../../utilities/time"
+import { format_time } from "../../utilities/time"
 
 import styles from "./controls.module.css"
 
+// @see resource: https://github.com/solidjs/solid/discussions/1820
 
 export default (props: {
-    useLeave?: boolean,
-    useSpeedUp?: boolean,
-    useSlowDown?: boolean,
-    useMultiplier?: boolean,
-    useShowTime?: boolean
+    leave?: boolean,
+    speed_up?: boolean,
+    slow_down?: boolean,
+    multiplier?: boolean,
+    show_time?: boolean
 }) => {
-    const [isRunning, { startSimulation, pauseSimulation }] = RunState
-    const [timeState, { decreaseSpeed, increaseSpeed, isMaximumSpeed, isMinimumSpeed }] = TimeState
+    const [is_running, { start_simulation, pause_simulation }] = RunState
+    const [timeState, { decrease_speed, increase_speed, is_maximum_speed, is_minimum_speed }] = TimeState
 
     return (
         <div class={styles.Controls}>
-            <Show when={ !isRunning() }>
-                <button onclick={ () => startSimulation() }>play</button>
+            <Show when={ !is_running() }>
+                <button onclick={ () => start_simulation() }>play</button>
             </Show>
-            <Show when={ isRunning() }>
-                <button onclick={ () => pauseSimulation() }>stop</button>
+            <Show when={ is_running() }>
+                <button onclick={ () => pause_simulation() }>stop</button>
             </Show>
-            <Show when={ props.useSlowDown || false }>
-                <button onclick={ () => decreaseSpeed() } disabled={ isMinimumSpeed() }>slow down</button>
+            <Show when={ props.slow_down || false }>
+                <button onclick={ () => decrease_speed() } disabled={ is_minimum_speed() }>slow down</button>
             </Show>
-            <Show when={ props.useMultiplier || false }>
-                <p>{timeState.speedMultiplier}x</p>
+            <Show when={ props.multiplier || false }>
+                <p>{timeState.speed_multiplier}x</p>
             </Show>
-            <Show when={ props.useSpeedUp || false }>
-                <button onclick={ () => increaseSpeed() } disabled={ isMaximumSpeed() }>speed up</button>
+            <Show when={ props.speed_up || false }>
+                <button onclick={ () => increase_speed() } disabled={ is_maximum_speed() }>speed up</button>
             </Show>
-            <Show when={ props.useShowTime || true }>
-                <p>{ formatTime(timeState.elapsedTime) }</p>
+            <Show when={ props.show_time || true }>
+                <p>{ format_time(timeState.elapsed_time) }</p>
             </Show>
-            <Show when={ props.useLeave || false }>
+            <Show when={ props.leave || false }>
                 <button>leave</button>
             </Show>
         </div>

@@ -1,15 +1,9 @@
-import { ITask } from "./types"
 import { type TPixiRenderer } from "./pixi_renderer"
+import { Task } from "./task"
 
 
-abstract class PixiTask implements ITask {
-
+abstract class PixiTask extends Task {
     abstract init: (application: TPixiRenderer) => Promise<void>
-
-    abstract is_completed: () => boolean
-
-    abstract loop: (delta_time: number) => void
-
 }
 
 export {

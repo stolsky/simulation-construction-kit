@@ -1,4 +1,4 @@
-const formatTime = (msec: number) => {
+const format_time = (msec: number) => {
 
     const seconds = msec / 100
     const secondsString = (seconds % 60).toFixed(0).padStart(2, "0")
@@ -10,5 +10,5 @@ const formatTime = (msec: number) => {
 
 
 export {
-    formatTime
+    format_time
 }
